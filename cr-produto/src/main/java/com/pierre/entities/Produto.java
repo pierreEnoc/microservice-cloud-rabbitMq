@@ -29,7 +29,7 @@ public class Produto implements Serializable {
 	@Column(name = "estoque", nullable = false, length = 10)
 	private Integer estoque;
 	
-	@Column(name = "preco", nullable = false, length = 255)
+	@Column(name = "preco", nullable = false, length = 10)
 	private Double preco;
 	
 	public Produto() {
