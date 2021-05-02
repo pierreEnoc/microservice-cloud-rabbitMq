@@ -9,10 +9,9 @@ import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.pierre.pagamento.entities.ProdutoVenda;
 import com.pierre.pagamento.entities.Venda;
 
-@JsonPropertyOrder({"id","data","produtos","valaorTotal"})
+@JsonPropertyOrder({"id","data","produtos","valorTotal"})
 public class VendaVO extends RepresentationModel<VendaVO> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -24,21 +23,21 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 	private Date data;
 	
 	@JsonProperty("produtos")
-	private List<ProdutoVenda> produtos;
+	private List<ProdutoVendaVO> produtos;
 	
-	@JsonProperty("valaorTotal")
-	private Double valaorTotal;
+	@JsonProperty("valorTotal")
+	private Double valorTotal;
 	
 	public VendaVO() {
 		
 	}
 
-	public VendaVO(Long id, Date data, List<ProdutoVenda> produtos, Double valaorTotal) {
+	public VendaVO(Long id, Date data, List<ProdutoVendaVO> produtos, Double valorTotal) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.produtos = produtos;
-		this.valaorTotal = valaorTotal;
+		this.valorTotal = valorTotal;
 	}
 
 	public Long getId() {
@@ -57,20 +56,20 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 		this.data = data;
 	}
 
-	public List<ProdutoVenda> getProdutos() {
+	public List<ProdutoVendaVO> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<ProdutoVenda> produtos) {
+	public void setProdutos(List<ProdutoVendaVO> produtos) {
 		this.produtos = produtos;
 	}
 
-	public Double getValaorTotal() {
-		return valaorTotal;
+	public Double getValorTotal() {
+		return valorTotal;
 	}
 
 	public void setValaorTotal(Double valaorTotal) {
-		this.valaorTotal = valaorTotal;
+		this.valorTotal = valaorTotal;
 	}
 
 	@Override
@@ -100,7 +99,7 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 
 	@Override
 	public String toString() {
-		return "VendaVO [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valaorTotal=" + valaorTotal + "]";
+		return "VendaVO [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valaorTotal=" + valorTotal + "]";
 	}
 	
 	//convertervendavo

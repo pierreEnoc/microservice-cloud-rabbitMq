@@ -20,7 +20,7 @@ public class ProdutoVendaVO extends RepresentationModel<ProdutoVendaVO> implemen
 	@JsonProperty("idProduto")
 	private Long idProduto;
 	
-	@JsonProperty("quantidate")
+	@JsonProperty("quantidade")
 	private Integer qantidade;
 	
 	public ProdutoVendaVO() {

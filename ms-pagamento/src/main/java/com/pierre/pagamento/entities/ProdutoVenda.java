@@ -59,6 +59,16 @@ public class ProdutoVenda implements Serializable {
 	public void setQantidade(Integer qantidade) {
 		this.qantidade = qantidade;
 	}
+	
+	
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
 
 	@Override
 	public int hashCode() {
@@ -90,7 +100,7 @@ public class ProdutoVenda implements Serializable {
 		return "ProdutoVenda [id=" + id + ", idProduto=" + idProduto + ", qantidade=" + qantidade + "]";
 	}
 	
-	public static ProdutoVenda creste(ProdutoVendaVO produtoVendaVO) {
+	public static ProdutoVenda create(ProdutoVendaVO produtoVendaVO) {
 		return new ModelMapper().map(produtoVendaVO, ProdutoVenda.class);
 	}
 	

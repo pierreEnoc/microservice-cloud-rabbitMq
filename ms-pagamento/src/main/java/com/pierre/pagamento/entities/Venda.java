@@ -1,5 +1,6 @@
 package com.pierre.pagamento.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,11 @@ import com.pierre.pagamento.data.vo.VendaVO;
 
 @Entity
 @Table(name = "venda")
-public class Venda {
+public class Venda implements Serializable {
+	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,8 +38,8 @@ public class Venda {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venda", cascade = CascadeType.REFRESH)
 	private List<ProdutoVenda> produtos;
 	
-	@Column(name = "valorTolal", nullable = false, length = 10)
-	private Double valorTolal;
+	@Column(name = "valorTotal")
+	private Double valorTotal;
 	
 	public Venda() {
 		
@@ -45,7 +50,7 @@ public class Venda {
 		this.id = id;
 		this.data = data;
 		this.produtos = produtos;
-		this.valorTolal = valorTolal;
+		this.valorTotal = valorTolal;
 	}
 
 	public Long getId() {
@@ -73,11 +78,11 @@ public class Venda {
 	}
 
 	public Double getValorTolal() {
-		return valorTolal;
+		return valorTotal;
 	}
 
 	public void setValorTolal(Double valorTolal) {
-		this.valorTolal = valorTolal;
+		this.valorTotal = valorTolal;
 	}
 
 	@Override
@@ -107,7 +112,7 @@ public class Venda {
 
 	@Override
 	public String toString() {
-		return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valorTolal=" + valorTolal + "]";
+		return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valorTotal=" + valorTotal + "]";
 	}
 	
 
