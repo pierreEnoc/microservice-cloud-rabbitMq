@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
+
+import com.pierre.data.vo.ProdutoVO;
+
 @Entity
 @Table(name = "produto")
 public class Produto implements Serializable {
@@ -100,5 +104,9 @@ public class Produto implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+	public static Produto create(ProdutoVO produtoVO) {
+		return new ModelMapper().map(produtoVO, Produto.class);
 	}
 }

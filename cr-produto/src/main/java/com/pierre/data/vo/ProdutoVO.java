@@ -2,8 +2,11 @@ package com.pierre.data.vo;
 
 import java.io.Serializable;
 
+import org.modelmapper.ModelMapper;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.pierre.entities.Produto;
 
 @JsonPropertyOrder({"id","nome","estoque","preco"})
 public class ProdutoVO implements Serializable {
@@ -94,6 +97,10 @@ public class ProdutoVO implements Serializable {
 	@Override
 	public String toString() {
 		return "ProdutoVO [id=" + id + ", nome=" + nome + ", estoque=" + estoque + ", preco=" + preco + "]";
+	}
+	
+	public static ProdutoVO create(Produto produto) {
+		return new ModelMapper().map(produto, ProdutoVO.class);
 	}
 	
 }
