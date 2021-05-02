@@ -1,38 +1,32 @@
-package com.pierre.entities;
+package com.pierre.data.vo;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@Entity
-@Table(name = "produto")
-public class Produto implements Serializable {
+@JsonPropertyOrder({"id","nome","estoque","preco"})
+public class ProdutoVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@JsonProperty("id")
 	private Long id;
 	
-	@Column(name = "nome", nullable = false, length = 255)
+	@JsonProperty("nome")
 	private String nome;
 	
-	@Column(name = "estoque", nullable = false, length = 10)
+	@JsonProperty("estoque")
 	private Integer estoque;
 	
-	@Column(name = "preco", nullable = false, length = 255)
+	@JsonProperty("preco")
 	private Double preco;
 	
-	public Produto() {
+	public ProdutoVO() {
 		
 	}
 
-	public Produto(Long id, String nome, Integer estoque, Double preco) {
+	public ProdutoVO(Long id, String nome, Integer estoque, Double preco) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -73,11 +67,6 @@ public class Produto implements Serializable {
 	}
 
 	@Override
-	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", estoque=" + estoque + ", preco=" + preco + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -93,7 +82,7 @@ public class Produto implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		ProdutoVO other = (ProdutoVO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -101,4 +90,10 @@ public class Produto implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ProdutoVO [id=" + id + ", nome=" + nome + ", estoque=" + estoque + ", preco=" + preco + "]";
+	}
+	
 }
