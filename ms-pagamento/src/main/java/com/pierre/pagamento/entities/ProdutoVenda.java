@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
+
+import com.pierre.pagamento.data.vo.ProdutoVendaVO;
+
 @Entity
 @Table(name = "produtoVenda")
 public class ProdutoVenda implements Serializable {
@@ -86,6 +90,8 @@ public class ProdutoVenda implements Serializable {
 		return "ProdutoVenda [id=" + id + ", idProduto=" + idProduto + ", qantidade=" + qantidade + "]";
 	}
 	
+	public static ProdutoVenda creste(ProdutoVendaVO produtoVendaVO) {
+		return new ModelMapper().map(produtoVendaVO, ProdutoVenda.class);
+	}
 	
-
 }

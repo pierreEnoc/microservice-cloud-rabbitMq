@@ -13,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.pierre.pagamento.data.vo.VendaVO;
 
 @Entity
 @Table(name = "venda")
@@ -105,6 +108,12 @@ public class Venda {
 	@Override
 	public String toString() {
 		return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valorTolal=" + valorTolal + "]";
+	}
+	
+
+	//convertervendavo
+	public static Venda create(VendaVO vendaVO) {
+		return new ModelMapper().map(vendaVO, Venda.class);
 	}
 	
 }

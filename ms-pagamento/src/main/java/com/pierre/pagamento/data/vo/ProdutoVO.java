@@ -1,29 +1,30 @@
-package com.pierre.pagamento.entities;
+package com.pierre.pagamento.data.vo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.hateoas.RepresentationModel;
 
-import com.pierre.pagamento.data.vo.ProdutoVO;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.pierre.pagamento.entities.Produto;
 
-@Entity
-@Table(name = "produto")
-public class Produto {
+@JsonPropertyOrder({"id","estoque"})
+public class ProdutoVO extends RepresentationModel<ProdutoVO> implements Serializable {
 	
-	@Id
+	private static final long serialVersionUID = 1L;
+	
+	@JsonProperty("id")
 	private Long id;
 	
-	@Column(name = "estoque", nullable = false, length = 10)
+	@JsonProperty("estoque")
 	private Integer estoque;
 	
-	public Produto() {
+	public ProdutoVO() {
 		
 	}
 
-	public Produto(Long id, Integer estoque) {
+	public ProdutoVO(Long id, Integer estoque) {
 		super();
 		this.id = id;
 		this.estoque = estoque;
@@ -61,7 +62,7 @@ public class Produto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		ProdutoVO other = (ProdutoVO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -72,11 +73,12 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", estoque=" + estoque + "]";
+		return "ProdutoVO [id=" + id + ", estoque=" + estoque + "]";
 	}
 	
-	public static Produto create(ProdutoVO produtoVO) {
+	public static ProdutoVO create(Produto produto) {
 		
-		return new ModelMapper().map(produtoVO, Produto.class);
+		return new ModelMapper().map(produto, ProdutoVO.class);
 	}
+    
 }
